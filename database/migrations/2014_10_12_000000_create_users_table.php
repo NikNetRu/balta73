@@ -21,6 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('phone')->default('введите телефон');
+            $table->string('adress')->default('введите адрес');
+            $table->string('realName')->default('введите имя');
+            $table->string('realSurname')->default('введите фамилию');
             $table->boolean('admin')->default(0);
         });
     }

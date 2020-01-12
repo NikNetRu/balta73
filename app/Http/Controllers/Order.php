@@ -68,6 +68,11 @@ class Order extends Controller
 
         
     }
+    
+    function buyThis (request $request) {
+        
+        return view('BuyThis');
+    }
          
 }
 

@@ -27,8 +27,9 @@
                 @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
+                    <a href = "{{url('user/'.Auth::user()->id)}}">
                     {{Auth::user()->name}}
-                   
+                    </a>
                     @If (Auth::user()->admin == true)
                     <a href="{{ url('add') }}">Добавить в категорию</a>
                     <a href="{{ url('addCategory') }}">Добавить категорию</a>
@@ -78,7 +79,7 @@
   </section>
 </main>
 
-   
+ 
  <div class = "row">
  <div class ="col-sm-3">   
 <div class="panel panel-default" >
@@ -88,11 +89,13 @@
     
   </div>
   <!-- Групповой список -->
-  <div class="list-group">
+
+ <div class="list-group">
     <a href="{{ url('main') }}" class="list-group-item">Главная <span class="badge"></span></a>
     <a href="{{ url('infoPayment') }}" class="list-group-item">Оплата и Доставка <span class="badge"></span></a>
     <a href="{{ url('about') }}" class="list-group-item">О нас<span class="badge"></span></a>
   </div>
+@yield('panel')
 </div>
 </div> 
      <div class ="col-sm-9">

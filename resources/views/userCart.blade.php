@@ -11,7 +11,7 @@
                    
             @if(Session::has('cart'))
                 @foreach (Session::get('cart') as $container)
-                <a class = "dropdown-item" id = "product{{$container['id'][0]}}}">
+                <a class = "dropdown-item" id = "product{{$container['id'][0]}}">
                     <div class = "row" ><input id = "{{$container['name'][0]}}" name = "{{$container['name'][0]}}" value = "{{$container['name'][0]}}" disabled>
                     <input id = "{{$container['cost'][0]}}" name = "{{$container['cost'][0]}}" value = "{{$container['cost'][0]}}" disabled> 
                     <input id = "num{{$container['id'][0]}}{{$container['name'][0]}}" value = "{{$container['num'][0]}}">

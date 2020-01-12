@@ -48,18 +48,17 @@ return view('addCategory');
 return redirect('/');
 });
 
-/*
-Route::get('/container/{name}', function ($name) {
-
-return Goods::createPage();
+Route::get('/user/editProfile', function () {
+return redirect('main');
 });
-*/
 
 
 Route::post('/add/product', 'LoadProduct@loadproduct')->name('load.product');
 Route::post('/add/category', 'LoadCategory@loadcategory')->name('load.category');
 Route::post('/order', 'Order@createOrderPage')->name('get.orderPage');  //создать страницу оформления заказа
-Route::post('/container/BuyThis', 'Order@addToCart')->name('buyThis');  // купить из корзина покупок
+Route::post('/container/BuyThis', 'Order@buyThis')->name('buyThis');  // купить из корзина покупок
+Route::post('/user/editProfile', 'Users@editUserData')->name('editUserData'); // редактирование данных пользователя
+Route::get('/user/{user}', 'Users@generateUserPage');
 Route::get('/', 'Content@get');
 Route::get('main', 'Content@get');
 Route::get('infoPayment', 'Content@infoPayment');

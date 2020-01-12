@@ -5,8 +5,8 @@ class BuyAndOrder {
      static addToCart (item, itemOrder = "oderFlow") {
          
         let container = item;
-        
         if (document.getElementById('product'+container.id)){
+            
            let elChildOrder = document.getElementById("num"+container.id+container.name); // блок див внутри элемента списка, содержащий количество товара
            let elNumUser = document.getElementById("numId"+container.id); //получем из формы заполненное поле количество
            let orderNum = Number.parseInt(elChildOrder.value);
@@ -15,12 +15,10 @@ class BuyAndOrder {
            elChildOrder.num = orderNum;
            elChildOrder.value = orderNum;
            
-           //////////////////////изменение свойст скрытых полей/////
-           let childHidden = document.getElementById(container.id);
-           childHidden.setAttribute('value', orderNum);
            
         }
         else{
+            
             let elOrder =  document.getElementById("orderFlow");
             let elChildOrder = document.createElement('a');
             elChildOrder.classList.add("dropdown-item");
@@ -67,7 +65,7 @@ class BuyAndOrder {
     static sendToCart (item) {
         let id = item.id;
         let num = document.getElementById('numId'+item.id);
-        
+        this.addToCart(item);
         $.ajaxSetup({
              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
                     });

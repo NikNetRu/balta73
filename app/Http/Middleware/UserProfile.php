@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class UserProfile
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     * пока не сипользуется
+     */
+    public function handle($request, Closure $next)
+    {   
+        
+    }
+}
