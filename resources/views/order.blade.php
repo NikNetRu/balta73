@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method = "POST" id = 'buyThis' name = 'buyThis' action = "{{route('buyThis')}}">
+<form method = "POST" id = 'buyThis' name = 'buyThis' action = "{{route('addToOrder')}}">
     {{csrf_field()}}
 <table class="table" id ="orderTable">
   <thead>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Goods;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class Order extends Controller
 {   
@@ -27,12 +29,12 @@ class Order extends Controller
             $exGood = Goods::all()->where('id', $id)->first();
             $sender[] = ['id' => $id, 
                 'num' => $num, 
-                'name' => $exGood->name,
-                'about' => $exGood->about,
-                'cost' => $exGood->cost,
-                'picture' => $exGood->picture,
-                'summary' => $exGood->cost*$num];
-            $summa += $exGood->cost*$num;
+                'name' => $exGood['name'],
+                'about' => $exGood['about'],
+                'cost' => $exGood['cost'],
+                'picture' => $exGood['picture'],
+                'summary' => $exGood['cost']*$num];
+            $summa += $exGood['cost']*$num;
              
         }
         
@@ -69,8 +71,19 @@ class Order extends Controller
         
     }
     
-    function buyThis (request $request) {
+    //добавляем данные в таблицу Orders, чистим из сессии данные
+    function addToOrder (request $request) {
         
+        $senderString = '';
+        foreach ($request->session()->get('cart') as $container) {
+            
+            $id = $container['id'][0];
+            $num = $container['num'][0];
+            (string) $senderString .= (string) "$id.$num,";
+        }
+        $senderString = substr($senderString,0,-1);
+        DB::table('orders')->insert(['id_num' => $senderString, 'user' => Auth::user()->id, 'status' => 'notAcepted']);
+        Session::forget('cart');
         return view('BuyThis');
     }
          

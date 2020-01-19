@@ -16,6 +16,10 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            //хранение заказа в виде строки, одна позиция отделяется от другой "," 4.22,5.17 ...
+            $table->string('id_num');
+            $table->string('user');
+            $table->string('status');
         });
     }
 

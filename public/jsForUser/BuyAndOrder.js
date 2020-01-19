@@ -51,11 +51,13 @@ class BuyAndOrder {
                     //elOrder.appendChild(getOrder);
                 }
                 else {
+                    /*
                     let buttonGetOrder = document.createElement('div');
                     buttonGetOrder.id = "blockOrder";
                     buttonGetOrder.innerHTML = "<button type=\"submit\" class=\"btn btn-primary\ id = \"getOrder\" >Оформить</button>";
                     let buttonAceptOrder = document.getElementById("aceptOrder");
                     buttonAceptOrder.appendChild(buttonGetOrder);
+                    */
                 }
             }
         

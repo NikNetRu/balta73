@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('adress')->default('введите адрес');
             $table->string('realName')->default('введите имя');
             $table->string('realSurname')->default('введите фамилию');
+            //id ордеров перечисляются через запятую 
+            $table->string('orders')->default('');
             $table->boolean('admin')->default(0);
         });
     }

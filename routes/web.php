@@ -56,9 +56,10 @@ return redirect('main');
 Route::post('/add/product', 'LoadProduct@loadproduct')->name('load.product');
 Route::post('/add/category', 'LoadCategory@loadcategory')->name('load.category');
 Route::post('/order', 'Order@createOrderPage')->name('get.orderPage');  //создать страницу оформления заказа
-Route::post('/container/BuyThis', 'Order@buyThis')->name('buyThis');  // купить из корзина покупок
+Route::post('/container/BuyThis', 'Order@addToCart')->name('buyThis');  // купить из корзина покупок
 Route::post('/user/editProfile', 'Users@editUserData')->name('editUserData'); // редактирование данных пользователя
-Route::get('/user/{user}', 'Users@generateUserPage');
+Route::post('/order/addToOrder', 'Order@addToOrder')->name('addToOrder'); // добавить заказ
+Route::get('/user/{user}', 'Users@generateUserPage')->name('generateUserPage');
 Route::get('/', 'Content@get');
 Route::get('main', 'Content@get');
 Route::get('infoPayment', 'Content@infoPayment');
